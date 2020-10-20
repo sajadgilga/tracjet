@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.project-slider-enter {
+    max-height: 0;
+    overflow-y: hidden;
+}
+
+.project-slider-enter-active {
+    max-height: 2000px;
+    transition-property: all;
+    transition-duration: .6s;
+}
+
+.project-slider-exit {
+    max-height: 2000px;
+}
+
+.project-slider-exit-active {
+    max-height: 0;
+    overflow-y: hidden;
+    transition-property: all;
+    transition-duration: .3s;
+}
