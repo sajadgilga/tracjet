@@ -20,8 +20,7 @@ module.exports = {
 				38: '9.5rem',
 				52: '13rem',
 				72: '18rem',
-				128: '32rem',
-				content: 'max-content'
+				128: '32rem'
 			},
 
 			opacity: {

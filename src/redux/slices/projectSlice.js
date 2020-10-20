@@ -17,76 +17,149 @@ export const ProjectPriorities = {
 
 const projectInitialState = [
 	{
-		title: 'example',
-		description: 'this is a project example',
-		createdDate: '2020-05-09T18:16:12.463Z',
-		startDate: '2020-05-09T18:16:12.463Z',
-		deadline: '2021-02-10T18:16:12.463Z',
+		Title: 'سامانه تحت وب بهین سورس',
+		Description: 'طراحی، برنامه‌ریزی سازمانی، توسعه و پشتیبانی سامانه تحت وب مدیریت فروش محصولات',
+		createdDate: '1399-06-11',
+		startDate: '1399-06-11',
+		deadline: '1399-08-27',
 		state: ProjectStates.ACTIVE,
 		notificationOffset: 7,
 		phases: [
 			{
-				title: 'phase 1',
-				description: 'this is phase 1',
-				deadline: '2020-11-10T18:16:12.463Z',
-				hardDeadline: '2020-11-10T18:16:12.463Z',
+				Title: 'فاز اول',
+				description: 'طراحی BPMN',
+				deadline: '1399-06-26',
+				hardDeadline: '1399-06-26',
 				notificationOffset: 7,
 				requirements: [
 					{
-						name: 'goal 1',
+						Name: 'طراحی BPMN ',
+						point: 10,
+						priority: ProjectPriorities.HIGH
+					}
+				]
+			},
+			{
+				Title: 'فاز دوم',
+				description: 'نیازمندی‌های اصلی سامانه',
+				deadline: '1399-07-30',
+				hardDeadline: '1399-07-30',
+				notificationOffset: 7,
+				requirements: [
+					{
+						Name: 'پیاده سازی سامانه سمت خریدار',
+						point: 10,
+						priority: ProjectPriorities.HIGH
+					}
+				]
+			},
+			{
+				Title: 'فاز سوم',
+				description: 'تکمیل سامانه تحت وب',
+				deadline: '1399-08-27',
+				hardDeadline: '1399-08-27',
+				notificationOffset: 7,
+				requirements: [
+					{
+						Name: 'پیاده سازی سامانه سمت فروشنده',
 						point: 10,
 						priority: ProjectPriorities.HIGH
 					},
 					{
-						name: 'goal 2',
-						point: 13,
-						priority: ProjectPriorities.MEDIUM
+						Name: 'نهایی کردن نسخه',
+						point: 10,
+						priority: ProjectPriorities.HIGH
 					}
 				]
 			}
 		]
 	},
 	{
-		title: 'example2',
-		description: 'this is a project example',
-		createdDate: '2020-01-01T18:16:12.463Z',
-		startDate: '2020-01-01T18:16:12.463Z',
-		deadline: '2020-11-06T18:16:12.463Z',
+		Title: 'پلتفرم دادیار',
+		Description: 'پلتفرم مشاوره حقوقی آنلاین موسسه حقوقی دانش پژوهان',
+		createdDate: '1399-06-12',
+		startDate: '1399-06-12',
+		deadline: '1399-10-10',
 		state: ProjectStates.ACTIVE,
 		notificationOffset: 7,
 		phases: [
 			{
-				title: 'phase 1',
-				description: 'this is phase 1',
-				deadline: '2020-10-06T18:16:12.463Z',
+				Title: 'فاز اول',
+				description: 'طراحی UI/UX اپلیکیشن',
+				deadline: '1399-08-01',
+				hardDeadline: '1399-08-01',
 				notificationOffset: 7,
 				requirements: [
 					{
-						name: 'goal 1',
-						point: 11,
+						Name: 'طراحی صفحات مرتبط با کاربر',
+						point: 10,
 						priority: ProjectPriorities.HIGH
 					},
 					{
-						name: 'goal 2',
-						point: 13,
+						Name: 'صفحات مرتبط با مشاور',
+						point: 10,
 						priority: ProjectPriorities.MEDIUM
 					}
 				]
 			},
 			{
-				title: 'phase 2',
-				description: 'this is phase 1',
-				deadline: '2020-11-01T18:16:12.463Z',
+				Title: 'فاز دوم',
+				description: 'برقراری مشاوره چت متنی',
+				deadline: '1399-08-25',
+				hardDeadline: '1399-08-25',
 				notificationOffset: 7,
 				requirements: [
 					{
-						name: 'goal 1',
-						point: 11,
+						Name: 'پیاده سازی فرآیند مشاوره با چت متنی',
+						point: 10,
+						priority: ProjectPriorities.HIGH
+					}
+				]
+			},
+			{
+				Title: 'فاز سوم',
+				description: 'برقراری مشاوره صوتی و تصویری',
+				deadline: '1399-09-10',
+				hardDeadline: '1399-09-10',
+				notificationOffset: 7,
+				requirements: [
+					{
+						Name: 'پیاده سازی فرآیند مشاوره  صوتی',
+						point: 10,
 						priority: ProjectPriorities.HIGH
 					},
 					{
-						name: 'goal 2',
-						point: 13,
+						Name: 'پیاده سازی فرآیند مشاوره  تصویری',
+						point: 10,
+						priority: ProjectPriorities.HIGH
+					},
+					{
+						Name: 'پیاده سازی فرآیند مشاوره  Voip',
+						point: 5,
+						priority: ProjectPriorities.LOW
+					}
+				]
+			},
+			{
+				Title: 'فاز چهارم',
+				description: 'پیاده‌سازی کامل پلتفرم دادیار',
+				deadline: '1399-10-10',
+				hardDeadline: '1399-10-10',
+				notificationOffset: 7,
+				requirements: [
+					{
+						Name: 'سامانه تیکت',
+						point: 10,
+						priority: ProjectPriorities.HIGH
+					},
+					{
+						Name: 'اعزام کارشناس',
+						point: 10,
+						priority: ProjectPriorities.HIGH
+					},
+					{
+						Name: 'تنظیم اوراق قضایی',
+						point: 10,
 						priority: ProjectPriorities.MEDIUM
 					}
 				]
