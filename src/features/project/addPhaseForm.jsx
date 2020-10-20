@@ -53,50 +53,88 @@ const MyDatePicker = ({ label, ...props }) => {
 	);
 };
 
-const AddPhaseForm = () => {
+const AddPhaseForm = ({ submit }) => {
 	const [ open, setOpen ] = useState(false);
+	const [ , update ] = useState(0);
 	return (
 		<Formik
-			initialValues={{ title: '', description: '', deadline: '', notificationOffset: 7, phases: [] }}
+			initialValues={{
+				title: '',
+				description: '',
+				deadline: '',
+				notificationOffset: 7,
+				requirements: [ { name: 'abas' } ]
+			}}
 			// validationSchema={}
 			onSubmit={(values, { setSubmitting }) => {
-				console.log(values);
+				submit(values);
 			}}
 		>
-			<Form>
-				<MyTextInput label="title" name="title" type="text" />
-				<MyTextInput label="description" name="description" type="text" />
-				<MyDatePicker label="deadline" name="deadline" type="text" />
-				<MyTextInput label="notificationOffset" name="notificationOffset" type="text" />
-				<Button
-					fullWidth
-					onClick={() => {
-						setOpen(true);
-					}}
-				>
-					add new requirement
-				</Button>
-				<Button type="submit" color="primary" variant="contained" fullWidth>
-					Submit
-				</Button>
-
-				<Dialog open={open} maxWidth="sm" fullWidth="sm" onClose={() => {}} aria-labelledby="form-dialog-title">
-					<DialogTitle id="form-dialog-title">Create new phase</DialogTitle>
-					<DialogContent>
-						<AddRequirementForm />
-					</DialogContent>
-					<DialogActions>
+			{(props) => {
+				const { values, handleChange, handleBlur } = props;
+				return (
+					<Form>
+						<MyTextInput label="title" name="title" type="text" />
+						<MyTextInput label="description" name="description" type="text" />
+						<MyDatePicker label="deadline" name="deadline" type="text" />
+						<MyTextInput label="notificationOffset" name="notificationOffset" type="text" />
+						{values.requirements.map((req, idx) => (
+							<div className="w-full my-2 flex flex-row justify-center" key={idx}>
+								<div className="font-bold text-center">{req.name}</div>
+								<div
+									className="text-extreme ml-5"
+									style={{ cursor: 'pointer' }}
+									onClick={() => {
+										values.requirements.splice(values.requirements.indexOf(req));
+										update(values.length);
+									}}
+								>
+									remove
+								</div>
+							</div>
+						))}
 						<Button
+							fullWidth
 							onClick={() => {
-								setOpen(false);
+								setOpen(true);
 							}}
-							color="secondary"
 						>
-							Cancel
+							add new requirement
 						</Button>
-					</DialogActions>
-				</Dialog>
-			</Form>
+						<Button type="submit" color="primary" variant="contained" fullWidth>
+							Submit
+						</Button>
+
+						<Dialog
+							open={open}
+							maxWidth="sm"
+							fullWidth="sm"
+							onClose={() => {}}
+							aria-labelledby="form-dialog-title"
+						>
+							<DialogTitle id="form-dialog-title">Create new phase</DialogTitle>
+							<DialogContent>
+								<AddRequirementForm
+									submit={(requirement) => {
+										values.requirements.push(requirement);
+										setOpen(false);
+									}}
+								/>
+							</DialogContent>
+							<DialogActions>
+								<Button
+									onClick={() => {
+										setOpen(false);
+									}}
+									color="secondary"
+								>
+									Cancel
+								</Button>
+							</DialogActions>
+						</Dialog>
+					</Form>
+				);
+			}}
 		</Formik>
 	);
 };

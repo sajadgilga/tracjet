@@ -7,6 +7,7 @@ module.exports = {
 				'-2.5': '-0.625rem',
 				'-3.5': '-0.875rem',
 				'-4.5': '-1.125rem',
+				0.1: '0.025rem',
 				0.5: '0.125rem',
 				2.5: '0.625rem',
 				7: '1.75rem',
@@ -16,6 +17,7 @@ module.exports = {
 				18: '4.5rem',
 				28: '7rem',
 				36: '9rem',
+				38: '9.5rem',
 				52: '13rem',
 				72: '18rem',
 				128: '32rem',
@@ -69,15 +71,18 @@ module.exports = {
 			}
 		},
 		colors: {
-			white: '#FEFCFF',
+			white: {
+				default: '#FEFCFF',
+				bright: '#fffef0'
+			},
 			black: '#2C3040',
 			dark: '#2c3040',
-			yellow: '#c7bc1e',
-			green: '#1fa141',
+			danger: { default: '#fce38a', fade: '#fce38a30' },
+			safe: { default: '#95e1d3', fade: '#95e1d330' },
 			primary: {
 				default: '#305df2',
 				dark: '#132f8c',
-				'light-fade': '#E8EAF155'
+				'light-fade': '#E8EAF130'
 			},
 			grey: {
 				default: '#5a6387',
@@ -87,7 +92,8 @@ module.exports = {
 				light: '#D3D2CD'
 			},
 			transparent: 'transparent',
-			red: '#B00020'
+			extreme: { default: '#f38181', fade: '#f3818130' },
+			fine: { default: '#eaffd0', fade: '#eaffd030' }
 		}
 	},
 	variants: {},

@@ -12,10 +12,10 @@ import AddProjectForm from '../features/project/addProjectForm';
 const ProjectPage = () => {
 	const projects = useSelector(projectSelect);
 	const [ open, setOpen ] = useState(false);
-	const addNewProject = () => {};
+	const [ projectExpanded, expandProject ] = useState(0);
 
 	return (
-		<div className="bg-white min-h-screen ">
+		<div className="bg-white min-h-screen">
 			<div className="flex justify-between mx-10 mt-20">
 				<div className="text-black font-bold text-xl p-3">Projects</div>
 				<div
@@ -27,8 +27,7 @@ const ProjectPage = () => {
 					add project
 				</div>
 			</div>
-			{Object.keys(projects).map((pkey, idx) => {
-				const p = projects[pkey];
+			{projects.map((p, idx) => {
 				return (
 					<Project
 						key={idx}
@@ -37,6 +36,12 @@ const ProjectPage = () => {
 						deadline={p.deadline}
 						state={p.state}
 						phases={p.phases}
+						expanded={idx === projectExpanded}
+						expand={() => {
+							if (idx === projectExpanded) expandProject(-1);
+							else expandProject(idx);
+						}}
+						startDate={p.startDate}
 					/>
 				);
 			})}
@@ -44,7 +49,11 @@ const ProjectPage = () => {
 			<Dialog open={open} maxWidth="md" fullWidth="md" onClose={() => {}} aria-labelledby="form-dialog-title">
 				<DialogTitle id="form-dialog-title">Create new project</DialogTitle>
 				<DialogContent>
-					<AddProjectForm />
+					<AddProjectForm
+						close={() => {
+							setOpen(false);
+						}}
+					/>
 				</DialogContent>
 				<DialogActions>
 					<Button

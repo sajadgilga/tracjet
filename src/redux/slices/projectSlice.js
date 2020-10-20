@@ -15,11 +15,13 @@ export const ProjectPriorities = {
 	WHY_THE_HELL_DO_WE_EVEN_DO_THIS: 4
 };
 
-const projectInitialState = {
-	example: {
+const projectInitialState = [
+	{
 		title: 'example',
 		description: 'this is a project example',
-		deadline: '30 shahrivar 1399',
+		createdDate: '2020-05-09T18:16:12.463Z',
+		startDate: '2020-05-09T18:16:12.463Z',
+		deadline: '2021-02-10T18:16:12.463Z',
 		state: ProjectStates.ACTIVE,
 		notificationOffset: 7,
 		phases: [
@@ -27,6 +29,7 @@ const projectInitialState = {
 				title: 'phase 1',
 				description: 'this is phase 1',
 				deadline: '2020-11-10T18:16:12.463Z',
+				hardDeadline: '2020-11-10T18:16:12.463Z',
 				notificationOffset: 7,
 				requirements: [
 					{
@@ -42,18 +45,38 @@ const projectInitialState = {
 				]
 			}
 		]
-    }, 
-    example2: {
+	},
+	{
 		title: 'example2',
 		description: 'this is a project example',
-		deadline: '30 shahrivar 1399',
+		createdDate: '2020-01-01T18:16:12.463Z',
+		startDate: '2020-01-01T18:16:12.463Z',
+		deadline: '2020-11-06T18:16:12.463Z',
 		state: ProjectStates.ACTIVE,
 		notificationOffset: 7,
 		phases: [
 			{
 				title: 'phase 1',
 				description: 'this is phase 1',
-				deadline: '2020-06-06T18:16:12.463Z',
+				deadline: '2020-10-06T18:16:12.463Z',
+				notificationOffset: 7,
+				requirements: [
+					{
+						name: 'goal 1',
+						point: 11,
+						priority: ProjectPriorities.HIGH
+					},
+					{
+						name: 'goal 2',
+						point: 13,
+						priority: ProjectPriorities.MEDIUM
+					}
+				]
+			},
+			{
+				title: 'phase 2',
+				description: 'this is phase 1',
+				deadline: '2020-11-01T18:16:12.463Z',
 				notificationOffset: 7,
 				requirements: [
 					{
@@ -70,13 +93,15 @@ const projectInitialState = {
 			}
 		]
 	}
-};
+];
 
 export const projectSlice = createSlice({
 	name: 'projects',
 	initialState: projectInitialState,
 	reducers: {
-		addProject: (state, action) => {},
+		addProject: (state, action) => {
+			return [ ...state, action.payload ];
+		},
 		removeProject: (state, action) => {},
 		changeProject: (state, action) => {}
 	}

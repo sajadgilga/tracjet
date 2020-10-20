@@ -15,7 +15,7 @@ const MyTextInput = ({ label, type, ...props }) => {
 	);
 };
 
-const AddRequirementForm = () => {
+const AddRequirementForm = ({ submit }) => {
 	return (
 		<Formik
 			initialValues={{
@@ -25,7 +25,7 @@ const AddRequirementForm = () => {
 			}}
 			// validationSchema={}
 			onSubmit={(values, { setSubmitting }) => {
-				console.log(values);
+				submit(values);
 			}}
 		>
 			<Form>
