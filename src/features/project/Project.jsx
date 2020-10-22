@@ -19,8 +19,8 @@ const Project = ({ title, description = '', deadline, state, phases, expanded, e
 	const now = new Date();
 	let currentPhase = phases[0];
 	for (const phase in phases) {
-		if (now < new Date(phase.deadline)) {
-			currentPhase = phase;
+		if (now < new Date(phases[phase].deadline)) {
+			currentPhase = phases[phase];
 			break;
 		}
 	}
@@ -43,8 +43,8 @@ const Project = ({ title, description = '', deadline, state, phases, expanded, e
 			<div className="flex text-right mb-0.1" onClick={expand}>
 				<div
 					className={`opacity-0.9 hover:opacity-100 bg-${getColor(timeState)
-						.bg} flex justify-between bg-white shadow-md 
-					hover:shadow-xl h-40 cursor-pointer z-10`}
+						.bg} flex justify-between bg-white 
+					 h-40 cursor-pointer z-10`}
 					style={{
 						width: `${progress}%`
 					}}
@@ -54,7 +54,12 @@ const Project = ({ title, description = '', deadline, state, phases, expanded, e
 						(new Date(phase.deadline).getTime() - startDateObject.getTime()) /
 						(deadlineObject.getTime() - startDateObject.getTime()) *
 						100;
-					return <div className="border-r-2 absolute z-400 h-40" style={{ width: `${phaseBreakPoint}%` }} />;
+					return (
+						<div
+							className="border-r-2 absolute z-400 h-40 shadow-md hover:shadow-xl"
+							style={{ width: `${phaseBreakPoint}%` }}
+						/>
+					);
 				})}
 				<div className="w-full md:w-1/2 lg:w-2/5 xl:w-128 flex justify-between absolute z-500">
 					<div className={`text-${getColor(timeState).text} text-lg font-black`}>
